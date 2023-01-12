@@ -48,6 +48,12 @@ img {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.alert-container {
+  height: 80px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  position: fixed;
+}
 
 /* Text Styles*/
 .x-large {

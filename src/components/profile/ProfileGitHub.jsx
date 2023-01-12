@@ -12,45 +12,47 @@ export const ProfileGitHub = ({ profile }) => {
     }
   }, [dispatch, profile.githubusername]);
   const repos = useSelector((state) => state.profile.repos);
-  const loading = useSelector((state) => state.profile.loading);
+  const loading = useSelector((state) => state.profile.reposLoading);
 
   return (
     <div className="profile-github">
       <h2 className="text-primary my-1">Github Repositories</h2>
       {loading ? (
         <Spinner />
-      ) : repos ? (
-        repos.map((repo) => (
-          <div key={repo.id} className="repo bg-white p-1 my-1">
-            <div>
-              <h4>
-                <a
-                  href={repo.html_url}
-                  target="_blank"
-                  rel="noopenere noreferrer"
-                >
-                  {repo.name}
-                </a>
-              </h4>
-              <p>{repo.description}</p>
-            </div>
-            <div>
-              <ul>
-                <li key={1} className="badge badge-primary">
-                  Stars: {repo.stargazers_count}
-                </li>
-                <li key={2} className="badge badge-dark">
-                  Watchers: {repo.watchers_count}
-                </li>
-                <li key={3} className="badge badge-light">
-                  Forks: {repo.forks_count}
-                </li>
-              </ul>
-            </div>
-          </div>
-        ))
       ) : (
-        <p>Repositorieas wasn't found</p>
+        <>
+          {repos &&
+            repos.map((repo) => (
+              <div key={repo.id} className="repo bg-white p-1 my-1">
+                <div>
+                  <h4>
+                    <a
+                      href={repo.html_url}
+                      target="_blank"
+                      rel="noopenere noreferrer"
+                    >
+                      {repo.name}
+                    </a>
+                  </h4>
+                  <p>{repo.description}</p>
+                </div>
+                <div>
+                  <ul>
+                    <li key={1} className="badge badge-primary">
+                      Stars: {repo.stargazers_count}
+                    </li>
+                    <li key={2} className="badge badge-dark">
+                      Watchers: {repo.watchers_count}
+                    </li>
+                    <li key={3} className="badge badge-light">
+                      Forks: {repo.forks_count}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ))}
+          {!repos && <p>Repositories wasn't found</p>}
+        </>
       )}
     </div>
   );

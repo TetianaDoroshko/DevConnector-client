@@ -12,12 +12,7 @@ export const Alert = ({ alerts }) => {
   ));
 
   return (
-    <div
-      className="container alert"
-      style={{ height: "80px", marginTop: "10px", marginBottom: "0" }}
-    >
-      {alerts && alertMarkup}
-    </div>
+    <div className="container alert-container">{alerts && alertMarkup}</div>
   );
 };
 

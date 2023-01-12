@@ -19,6 +19,7 @@ const initialState = {
   profiles: [],
   repos: [],
   loading: false,
+  reposLoading: false,
   error: {},
 };
 
@@ -143,16 +144,16 @@ const profileSlice = createSlice({
     },
     // get Git repositories
     [getGitRepos.pending]: (state) => {
-      state.loading = true;
+      state.reposLoading = true;
       state.error = false;
     },
     [getGitRepos.fulfilled]: (state, { payload }) => {
       state.repos = payload;
-      state.loading = false;
+      state.reposLoading = false;
     },
     [getGitRepos.rejected]: (state, { payload }) => {
       state.error = payload;
-      state.loading = false;
+      state.reposLoading = false;
     },
     // update avatar
     [updateAvatar.pending]: (state) => {
