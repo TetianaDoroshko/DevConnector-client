@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { callAlert } from "../../../helpers/alerts";
+import { BASE_URL } from "../../../helpers/variables";
 
 export const addProfile = createAsyncThunk(
   "profile/add",
   async (user, thunkAPI) => {
     try {
-      const res = await axios.post("/api/profile", user.formData);
+      const res = await axios.post(`${BASE_URL}/api/profile`, user.formData);
       // console.log(res.data);
       if (user.edit === false) {
         callAlert("Profile created", "success");

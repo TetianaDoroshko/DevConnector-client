@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// import { callAlert } from "../../../helpers/alerts";
+import { BASE_URL } from "../../../helpers/variables";
 
 export const getPost = createAsyncThunk(
   "post/get",
   async (postId, thunkAPI) => {
     try {
-      const res = await axios.get(`/api/posts/${postId}`);
+      const res = await axios.get(`${BASE_URL}/api/posts/${postId}`);
 
       return res.data;
     } catch (error) {

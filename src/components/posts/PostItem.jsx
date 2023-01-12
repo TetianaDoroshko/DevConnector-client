@@ -11,6 +11,7 @@ import {
 } from "../../redux/operations(thunks)";
 import axios from "axios";
 import defUserAvatar from "../../img/userDef.png";
+import { BASE_URL } from "../../helpers/variables";
 
 export const PostItem = ({ post = {}, showActions = true }) => {
   const { _id, text, name, user, likes, comments, date } = post;
@@ -20,7 +21,7 @@ export const PostItem = ({ post = {}, showActions = true }) => {
 
   useEffect(() => {
     (async () => {
-      const res = await axios.get(`/api/profile/avatar/${user}`);
+      const res = await axios.get(`${BASE_URL}/api/profile/avatar/${user}`);
       setAvatar(res.data);
     })();
   }, [user]);
